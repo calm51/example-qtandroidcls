@@ -229,10 +229,27 @@ public class qtandroiddemo extends org.qtproject.qt5.android.bindings.QtActivity
 //            statusbarHeight = this.getResources().getDimensionPixelSize(resourceId);
 //            this.statusbarHeight = statusbarHeight;}
 //        statusbarHeightChanged(this.statusbarHeight);
-        WindowInsets insets = getWindow().getDecorView().getRootWindowInsets();
-        int statusbarHeight = insets.getStableInsetTop();
-        this.statusbarHeight = statusbarHeight;
-        statusbarHeightChanged(this.statusbarHeight);
+
+
+//        WindowInsets insets = getWindow().getDecorView().getRootWindowInsets();
+//        int statusbarHeight = insets.getStableInsetTop();
+//        this.statusbarHeight = statusbarHeight;
+//        statusbarHeightChanged(this.statusbarHeight);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+               WindowInsets insets = getWindow().getDecorView().getRootWindowInsets();
+               int statusbarHeight = insets.getStableInsetTop();
+               this.statusbarHeight = statusbarHeight;
+               statusbarHeightChanged(this.statusbarHeight);
+        } else{
+                int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+                if (resourceId > 0) {
+                    int statusbarHeight = getResources().getDimensionPixelSize(resourceId);
+                    this.statusbarHeight = statusbarHeight;
+                    statusbarHeightChanged(this.statusbarHeight);
+                }
+        }
+
     }
 
 //    public void notify(String s){

@@ -146,8 +146,6 @@ public class qtandroiddemo extends org.qtproject.qt5.android.bindings.QtActivity
     protected void onStop() { // 在 Activity 即将变为不可见时调用，但在 Activity 完全不可见之前，对应着 Activity 从前台转到后台的事件
         Log.d(TAG, "onStop()");
         super.onStop();
-
-        this.upStatusbarHeight();
     }
     @Override
     protected void onResume() { // 在 Activity 即将开始交互并变为用户可见时调用，对应着 Activity 从不可见状态到可见状态的过渡
@@ -164,6 +162,8 @@ public class qtandroiddemo extends org.qtproject.qt5.android.bindings.QtActivity
     protected void onRestart() { // 当Activity由停止状态重新启动时调用
         Log.d(TAG, "onRestart()");
         super.onRestart();
+
+        this.upStatusbarHeight();
     }
     @Override
     protected void onDestroy() { // 当Activity即将被销毁时调用
